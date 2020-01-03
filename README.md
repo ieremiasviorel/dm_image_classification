@@ -8,3 +8,5 @@ Fine-grained image classification and object localization on the Stanford Dogs D
 3. ```.\venv\Scripts\activate```
 4. ```pip install -r requirements.txt```
 5. ```pip install opencv-python```
+6. download dataset - https://www.kaggle.com/jessicali9530/stanford-dogs-dataset 
+7. unzip archive contents inside ```/input```
