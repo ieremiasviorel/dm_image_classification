@@ -7,3 +7,4 @@ Fine-grained image classification and object localization on the Stanford Dogs D
 2. ```python -m venv env```
 3. ```.\venv\Scripts\activate```
 4. ```pip install -r requirements.txt```
+5. ```pip install opencv-python```
