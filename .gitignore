@@ -1,8 +1,6 @@
 /.idea
 /data
 /input
-<<<<<<< HEAD
 /venv
-=======
 /split
->>>>>>> Documented attempt at classification
+.vscode
