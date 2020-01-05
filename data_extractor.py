@@ -50,7 +50,7 @@ def extract_data():
 
     n_total_images = 0
     for breed in breed_list:
-        n_total_images += len(get_absolute_path(os.listdir("input/stanford-dogs-dataset/images/Images/{}".format(breed))))
+        n_total_images += len(os.listdir(get_absolute_path("input/stanford-dogs-dataset/images/Images/{}".format(breed))))
     print("{} images".format(n_total_images))
 
     label_maps = {}
