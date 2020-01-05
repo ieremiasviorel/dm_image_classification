@@ -31,21 +31,6 @@ def training_data(label, data_dir):
         Z.append(str(label))
 
 
-num_classes = len(breed_list)
-print("{} breeds".format(num_classes))
-
-n_total_images = 0
-for breed in breed_list:
-    n_total_images += len(os.listdir("input/stanford-dogs-dataset/images/Images/{}".format(breed)))
-print("{} images".format(n_total_images))
-
-label_maps = {}
-label_maps_rev = {}
-for i, v in enumerate(breed_list):
-    label_maps.update({v: i})
-    label_maps_rev.update({i: v})
-
-
 def show_dir_images(breed, n_to_show):
     plt.figure(figsize=(16, 16))
     img_dir = "input/stanford-dogs-dataset/images/Images/{}/".format(breed)
@@ -57,23 +42,38 @@ def show_dir_images(breed, n_to_show):
         plt.axis('off')
 
 
-print(breed_list[2])
-show_dir_images(breed_list[0], 16)
+def extract_data():
+    num_classes = len(breed_list)
+    print("{} breeds".format(num_classes))
 
-os.mkdir('data')
-for breed in breed_list:
-    os.mkdir('data/' + breed)
-print('Created {} folders to store cropped images of the different breeds.'.format(len(os.listdir('data'))))
+    n_total_images = 0
+    for breed in breed_list:
+        n_total_images += len(os.listdir("input/stanford-dogs-dataset/images/Images/{}".format(breed)))
+    print("{} images".format(n_total_images))
 
-for breed in os.listdir('data'):
-    for file in os.listdir('input/stanford-dogs-dataset/annotations/Annotation/{}'.format(breed)):
-        img = Image.open('input/stanford-dogs-dataset/images/Images/{}/{}.jpg'.format(breed, file))
-        tree = ET.parse('input/stanford-dogs-dataset/annotations/Annotation/{}/{}'.format(breed, file))
-        xmin = int(tree.getroot().findall('object')[0].find('bndbox').find('xmin').text)
-        xmax = int(tree.getroot().findall('object')[0].find('bndbox').find('xmax').text)
-        ymin = int(tree.getroot().findall('object')[0].find('bndbox').find('ymin').text)
-        ymax = int(tree.getroot().findall('object')[0].find('bndbox').find('ymax').text)
-        img = img.crop((xmin, ymin, xmax, ymax))
-        img = img.convert('RGB')
-        img = img.resize((224, 224))
-        img.save('data/' + breed + '/' + file + '.jpg')
+    label_maps = {}
+    label_maps_rev = {}
+    for i, v in enumerate(breed_list):
+        label_maps.update({v: i})
+        label_maps_rev.update({i: v})
+
+    print(breed_list[2])
+    show_dir_images(breed_list[0], 16)
+
+    os.mkdir('data')
+    for breed in breed_list:
+        os.mkdir('data/' + breed)
+    print('Created {} folders to store cropped images of the different breeds.'.format(len(os.listdir('data'))))
+
+    for breed in os.listdir('data'):
+        for file in os.listdir('input/stanford-dogs-dataset/annotations/Annotation/{}'.format(breed)):
+            img = Image.open('input/stanford-dogs-dataset/images/Images/{}/{}.jpg'.format(breed, file))
+            tree = ET.parse('input/stanford-dogs-dataset/annotations/Annotation/{}/{}'.format(breed, file))
+            xmin = int(tree.getroot().findall('object')[0].find('bndbox').find('xmin').text)
+            xmax = int(tree.getroot().findall('object')[0].find('bndbox').find('xmax').text)
+            ymin = int(tree.getroot().findall('object')[0].find('bndbox').find('ymin').text)
+            ymax = int(tree.getroot().findall('object')[0].find('bndbox').find('ymax').text)
+            img = img.crop((xmin, ymin, xmax, ymax))
+            img = img.convert('RGB')
+            img = img.resize((224, 224))
+            img.save('data/' + breed + '/' + file + '.jpg')
