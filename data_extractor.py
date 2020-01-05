@@ -62,13 +62,15 @@ def extract_data():
     print(breed_list[2])
     show_dir_images(breed_list[0], 16)
 
-    os.mkdir('data')
+    if not os.path.exists(get_absolute_path('data')):
+        os.mkdir(get_absolute_path('data'))
     for breed in breed_list:
-        os.mkdir('data/' + breed)
+        if not os.path.exists(get_absolute_path('data/' + breed)):
+            os.mkdir(get_absolute_path('data/' + breed))
     print('Created {} folders to store cropped images of the different breeds.'.format(
-        len(os.listdir('data'))))
+        len(os.listdir(get_absolute_path('data')))))
 
-    for breed in os.listdir('data'):
+    for breed in os.listdir(get_absolute_path('data')):
         for file in os.listdir(get_absolute_path('input/stanford-dogs-dataset/annotations/Annotation/{}'.format(breed))):
             img = Image.open(get_absolute_path('input/stanford-dogs-dataset/images/Images/{}/{}.jpg'.format(breed, file)))
             tree = ET.parse(get_absolute_path('input/stanford-dogs-dataset/annotations/Annotation/{}/{}'.format(breed, file)))
