@@ -8,7 +8,9 @@ import numpy as np
 from PIL import Image
 from tqdm import tqdm
 
-breed_list = os.listdir("input/stanford-dogs-dataset/images/Images/")
+from definitions import get_absolute_path
+
+breed_list = os.listdir(get_absolute_path("input/stanford-dogs-dataset/images/Images/"))
 
 
 def label_assignment(img, label):
@@ -33,7 +35,7 @@ def training_data(label, data_dir):
 
 def show_dir_images(breed, n_to_show):
     plt.figure(figsize=(16, 16))
-    img_dir = "input/stanford-dogs-dataset/images/Images/{}/".format(breed)
+    img_dir = get_absolute_path("input/stanford-dogs-dataset/images/Images/{}/".format(breed))
     images = os.listdir(img_dir)[:n_to_show]
     for ii in range(n_to_show):
         img = mpimg.imread(img_dir + images[ii])
@@ -48,7 +50,7 @@ def extract_data():
 
     n_total_images = 0
     for breed in breed_list:
-        n_total_images += len(os.listdir("input/stanford-dogs-dataset/images/Images/{}".format(breed)))
+        n_total_images += len(get_absolute_path(os.listdir("input/stanford-dogs-dataset/images/Images/{}".format(breed))))
     print("{} images".format(n_total_images))
 
     label_maps = {}
@@ -66,9 +68,9 @@ def extract_data():
     print('Created {} folders to store cropped images of the different breeds.'.format(len(os.listdir('data'))))
 
     for breed in os.listdir('data'):
-        for file in os.listdir('input/stanford-dogs-dataset/annotations/Annotation/{}'.format(breed)):
-            img = Image.open('input/stanford-dogs-dataset/images/Images/{}/{}.jpg'.format(breed, file))
-            tree = ET.parse('input/stanford-dogs-dataset/annotations/Annotation/{}/{}'.format(breed, file))
+        for file in os.listdir(get_absolute_path('input/stanford-dogs-dataset/annotations/Annotation/{}'.format(breed))):
+            img = Image.open(get_absolute_path('input/stanford-dogs-dataset/images/Images/{}/{}.jpg'.format(breed, file)))
+            tree = ET.parse(get_absolute_path('input/stanford-dogs-dataset/annotations/Annotation/{}/{}'.format(breed, file)))
             xmin = int(tree.getroot().findall('object')[0].find('bndbox').find('xmin').text)
             xmax = int(tree.getroot().findall('object')[0].find('bndbox').find('xmax').text)
             ymin = int(tree.getroot().findall('object')[0].find('bndbox').find('ymin').text)
@@ -76,4 +78,4 @@ def extract_data():
             img = img.crop((xmin, ymin, xmax, ymax))
             img = img.convert('RGB')
             img = img.resize((224, 224))
-            img.save('data/' + breed + '/' + file + '.jpg')
+            img.save(get_absolute_path('data/' + breed + '/' + file + '.jpg'))

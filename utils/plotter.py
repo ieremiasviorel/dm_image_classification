@@ -1,7 +1,7 @@
 import matplotlib.pyplot as plt
 import numpy as np
 
-RESULT_PLOTS_DIR = 'plots'
+from definitions import RESULT_PLOTS_DIR
 
 
 def plot_accuracy(history, model_name, trial_name):
