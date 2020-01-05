@@ -2,25 +2,28 @@ import numpy as np
 import os
 import keras
 import matplotlib.pyplot as plt
+<<<<<<< HEAD
 from keras.layers import Dense, GlobalAveragePooling2D
 from keras.applications import MobileNet
+=======
+from keras.layers import Dense,GlobalAveragePooling2D
+from keras.applications.vgg16 import VGG16,preprocess_input
+>>>>>>> Fixed bug in classification model
 from keras.preprocessing import image
-from keras.applications.mobilenet import preprocess_input
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Model
 from keras.optimizers import Adam
 
-# imports the mobilenet model and discards the last 1000 neuron layer.
-base_model = MobileNet(weights='imagenet', include_top=False)
+base_model = VGG16(include_top=False,
+                  input_shape = (224,224,3),
+                  weights = 'imagenet')
 
-x = base_model.output
-x = GlobalAveragePooling2D()(x)
-# we add dense layers so that the model can learn more complex functions and classify for better results.
-x = Dense(1024, activation='relu')(x)
-x = Dense(1024, activation='relu')(x)  # dense layer 2
-x = Dense(512, activation='relu')(x)  # dense layer 3
-preds = Dense(120, activation='softmax')(
-    x)  # final layer with softmax activation
+x=base_model.output
+x=GlobalAveragePooling2D()(x)
+x=Dense(1024,activation='relu')(x) #we add dense layers so that the model can learn more complex functions and classify for better results.
+x=Dense(1024,activation='relu')(x) #dense layer 2
+x=Dense(512,activation='relu')(x) #dense layer 3
+preds=Dense(3,activation='softmax')(x) #final layer with softmax activation
 
 model = Model(inputs=base_model.input, outputs=preds)
 # specify the inputs
@@ -30,8 +33,8 @@ model = Model(inputs=base_model.input, outputs=preds)
 for i, layer in enumerate(model.layers):
     print(i, layer.name)
 
-for layer in model.layers:
-    layer.trainable = False
+for layer in base_model.layers:
+    layer.trainable=False
 
 train_datagen = ImageDataGenerator(
     preprocessing_function=preprocess_input)  # included in our dependencies
