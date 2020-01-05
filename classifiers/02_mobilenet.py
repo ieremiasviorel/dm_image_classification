@@ -65,7 +65,7 @@ class MobileNetClassifier(Classifier):
         step_size_train = train_generator.n // train_generator.batch_size
 
         step_size_validation=validation_generator.n//validation_generator.batch_size
-        model.fit_generator(generator=train_generator,
+        self.model.fit_generator(generator=train_generator,
                    steps_per_epoch=step_size_train,
                    validation_data=validation_generator,
                    validation_steps=step_size_validation,
