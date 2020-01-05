@@ -32,12 +32,22 @@ for layer in model.layers:
 
 train_datagen=ImageDataGenerator(preprocessing_function=preprocess_input) #included in our dependencies
 
-train_generator=train_datagen.flow_from_directory('./data',
+train_generator=train_datagen.flow_from_directory('./split/train',
                                                  target_size=(224,224),
                                                  color_mode='rgb',
                                                  batch_size=32,
                                                  class_mode='categorical',
                                                  shuffle=True)
+
+test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
+
+validation_generator = test_datagen.flow_from_directory( 
+                                  './split/val', 
+                                  target_size=(224,224),
+                                  color_mode='rgb', 
+                                  batch_size=32,
+                                  class_mode='categorical',
+                                  shuffle=True)
 
 model.compile(optimizer='Adam',loss='categorical_crossentropy',metrics=['accuracy'])
 # Adam optimizer
@@ -45,6 +55,9 @@ model.compile(optimizer='Adam',loss='categorical_crossentropy',metrics=['accurac
 # evaluation metric will be accuracy
 
 step_size_train=train_generator.n//train_generator.batch_size
+step_size_validation=validation_generator.n//validation_generator.batch_size
 model.fit_generator(generator=train_generator,
                    steps_per_epoch=step_size_train,
+                   validation_data=validation_generator,
+                   validation_steps=step_size_validation,
                    epochs=10)
