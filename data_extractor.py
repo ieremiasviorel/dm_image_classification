@@ -50,7 +50,12 @@ def extract_data():
 
     n_total_images = 0
     for breed in breed_list:
+<<<<<<< HEAD
         n_total_images += len(get_absolute_path(os.listdir("input/stanford-dogs-dataset/images/Images/{}".format(breed))))
+=======
+        n_total_images += len(os.listdir(
+            "input/stanford-dogs-dataset/images/Images/{}".format(breed)))
+>>>>>>> 5c3b90d106b055f809e5983063f13bf9df9a05d4
     print("{} images".format(n_total_images))
 
     label_maps = {}
@@ -65,9 +70,11 @@ def extract_data():
     os.mkdir('data')
     for breed in breed_list:
         os.mkdir('data/' + breed)
-    print('Created {} folders to store cropped images of the different breeds.'.format(len(os.listdir('data'))))
+    print('Created {} folders to store cropped images of the different breeds.'.format(
+        len(os.listdir('data'))))
 
     for breed in os.listdir('data'):
+<<<<<<< HEAD
         for file in os.listdir(get_absolute_path('input/stanford-dogs-dataset/annotations/Annotation/{}'.format(breed))):
             img = Image.open(get_absolute_path('input/stanford-dogs-dataset/images/Images/{}/{}.jpg'.format(breed, file)))
             tree = ET.parse(get_absolute_path('input/stanford-dogs-dataset/annotations/Annotation/{}/{}'.format(breed, file)))
@@ -75,6 +82,21 @@ def extract_data():
             xmax = int(tree.getroot().findall('object')[0].find('bndbox').find('xmax').text)
             ymin = int(tree.getroot().findall('object')[0].find('bndbox').find('ymin').text)
             ymax = int(tree.getroot().findall('object')[0].find('bndbox').find('ymax').text)
+=======
+        for file in os.listdir('input/stanford-dogs-dataset/annotations/Annotation/{}'.format(breed)):
+            img = Image.open(
+                'input/stanford-dogs-dataset/images/Images/{}/{}.jpg'.format(breed, file))
+            tree = ET.parse(
+                'input/stanford-dogs-dataset/annotations/Annotation/{}/{}'.format(breed, file))
+            xmin = int(tree.getroot().findall('object')[
+                       0].find('bndbox').find('xmin').text)
+            xmax = int(tree.getroot().findall('object')[
+                       0].find('bndbox').find('xmax').text)
+            ymin = int(tree.getroot().findall('object')[
+                       0].find('bndbox').find('ymin').text)
+            ymax = int(tree.getroot().findall('object')[
+                       0].find('bndbox').find('ymax').text)
+>>>>>>> 5c3b90d106b055f809e5983063f13bf9df9a05d4
             img = img.crop((xmin, ymin, xmax, ymax))
             img = img.convert('RGB')
             img = img.resize((224, 224))
