@@ -20,7 +20,7 @@ x = Dense(1024, activation='relu')(x)
 x = Dense(1024, activation='relu')(x)  # dense layer 2
 x = Dense(512, activation='relu')(x)  # dense layer 3
 # final layer with softmax activation
-preds = Dense(3, activation='softmax')(x)
+preds = Dense(120, activation='softmax')(x)
 
 model = Model(inputs=base_model.input, outputs=preds)
 # specify the inputs
