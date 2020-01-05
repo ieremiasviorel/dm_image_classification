@@ -1,6 +1,10 @@
+from utils.plotter import plot_accuracy, plot_loss
+
+
 class Classifier:
     def __init__(self):
         self.model = None
+        self.history = None
         self.train_data_dir = 'split/train'
         self.validation_data_dir = 'split/val'
         self.epochs = 10
@@ -17,3 +21,7 @@ class Classifier:
 
     def save_model(self):
         self.model.save_weights('model_saved.h5')
+
+    def plot_history(self, model_name, trial_name):
+        plot_accuracy(self.history, model_name, trial_name)
+        plot_loss(self.history, model_name, trial_name)

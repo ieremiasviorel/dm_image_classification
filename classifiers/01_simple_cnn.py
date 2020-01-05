@@ -62,9 +62,12 @@ class SimpleCNN(Classifier):
             target_size=(self.img_width, self.img_height),
             batch_size=self.batch_size, class_mode='categorical')
 
-        self.model.fit_generator(
+        self.history = self.model.fit_generator(
             train_generator,
             steps_per_epoch=self.nb_train_samples // self.batch_size,
             epochs=self.epochs,
             validation_data=validation_generator,
             validation_steps=self.nb_validation_samples // self.batch_size)
+
+    def plot_history(self):
+        super().plot_history('simple_cnn', '001')

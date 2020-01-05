@@ -64,9 +64,13 @@ class MobileNetClassifier(Classifier):
         step_size_train = train_generator.n // train_generator.batch_size
 
         step_size_validation = validation_generator.n // validation_generator.batch_size
-        self.model.fit_generator(
+
+        self.history = self.model.fit_generator(
             generator=train_generator,
             steps_per_epoch=step_size_train,
             validation_data=validation_generator,
             validation_steps=step_size_validation,
             epochs=10)
+
+    def plot_history(self):
+        super().plot_history('mobilenet_cnn', '001')
