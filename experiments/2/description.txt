@@ -1,0 +1,33 @@
+https://www.geeksforgeeks.org/python-image-classification-using-keras/
+
+- classification 
+
+Results : 
+
+Found 16418 images belonging to 120 classes.
+Found 4162 images belonging to 120 classes.
+Epoch 1/10
+2020-01-05 19:14:07.616633: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 411041792 exceeds 10% of system memory.
+2020-01-05 19:14:07.841881: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 411041792 exceeds 10% of system memory.
+  1/513 [..............................] - ETA: 1:13:00 - loss: 7.9767 - accuracy: 0.0000e+002020-01-05 19:14:15.870138: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 411041792 exceeds 10% of system memory.
+2020-01-05 19:14:16.116906: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 411041792 exceeds 10% of system memory.
+  2/513 [..............................] - ETA: 1:12:35 - loss: 8.9734 - accuracy: 0.0156    2020-01-05 19:14:24.368369: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 411041792 exceeds 10% of system memory.
+513/513 [==============================] - 5096s 10s/step - loss: 1.6792 - accuracy: 0.5574 - val_loss: 1.2360 - val_accuracy: 0.6543
+Epoch 2/10
+513/513 [==============================] - 5091s 10s/step - loss: 0.9148 - accuracy: 0.7195 - val_loss: 1.4067 - val_accuracy: 0.6923
+Epoch 3/10
+513/513 [==============================] - 5079s 10s/step - loss: 0.7247 - accuracy: 0.7716 - val_loss: 0.9341 - val_accuracy: 0.6831
+Epoch 4/10
+513/513 [==============================] - 5091s 10s/step - loss: 0.6088 - accuracy: 0.8074 - val_loss: 1.4505 - val_accuracy: 0.7223
+Epoch 5/10
+513/513 [==============================] - 5079s 10s/step - loss: 0.5332 - accuracy: 0.8257 - val_loss: 0.9368 - val_accuracy: 0.7109
+Epoch 6/10
+513/513 [==============================] - 5071s 10s/step - loss: 0.4533 - accuracy: 0.8480 - val_loss: 1.3920 - val_accuracy: 0.7114
+Epoch 7/10
+513/513 [==============================] - 5071s 10s/step - loss: 0.4014 - accuracy: 0.8678 - val_loss: 1.1726 - val_accuracy: 0.7034
+Epoch 8/10
+513/513 [==============================] - 5075s 10s/step - loss: 0.3701 - accuracy: 0.8794 - val_loss: 1.4222 - val_accuracy: 0.7257
+Epoch 9/10
+513/513 [==============================] - 5072s 10s/step - loss: 0.3285 - accuracy: 0.8941 - val_loss: 0.5409 - val_accuracy: 0.7099
+Epoch 10/10
+513/513 [==============================] - 5066s 10s/step - loss: 0.3199 - accuracy: 0.8979 - val_loss: 1.6607 - val_accuracy: 0.7153
