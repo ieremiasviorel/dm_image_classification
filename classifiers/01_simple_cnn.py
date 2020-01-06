@@ -1,4 +1,3 @@
-from keras import backend as K
 from keras.layers import Activation, Dropout, Flatten, Dense
 from keras.layers import Conv2D, MaxPooling2D
 from keras.models import Sequential
@@ -10,13 +9,6 @@ from classifier import Classifier
 class SimpleCNN(Classifier):
     def __init__(self):
         super(SimpleCNN, self).__init__()
-        self.input_shape = None
-
-    def preprocess_data(self):
-        if K.image_data_format() == 'channels_first':
-            self.input_shape = (3, self.img_width, self.img_height)
-        else:
-            self.input_shape = (self.img_width, self.img_height, 3)
 
     def train(self):
         self.model = Sequential()
@@ -63,11 +55,8 @@ class SimpleCNN(Classifier):
             batch_size=self.batch_size, class_mode='categorical')
 
         self.history = self.model.fit_generator(
-            train_generator,
-            steps_per_epoch=self.nb_train_samples // self.batch_size,
-            epochs=self.epochs,
+            train_generator=train_generator,
             validation_data=validation_generator,
+            epochs=self.epochs,
+            steps_per_epoch=self.nb_train_samples // self.batch_size,
             validation_steps=self.nb_validation_samples // self.batch_size)
-
-    def plot_history(self):
-        super().plot_history('simple_cnn', '001')

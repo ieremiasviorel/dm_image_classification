@@ -5,6 +5,7 @@ from keras.models import Model
 from keras.preprocessing.image import ImageDataGenerator
 
 from classifier import Classifier
+from definitions import absolute_path
 
 
 class MobileNetClassifier(Classifier):
@@ -40,7 +41,7 @@ class MobileNetClassifier(Classifier):
         train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
 
         train_generator = train_datagen.flow_from_directory(
-            './data',
+            absolute_path('data'),
             target_size=(self.img_width, self.img_height),
             color_mode='rgb',
             batch_size=self.batch_size,
@@ -50,10 +51,10 @@ class MobileNetClassifier(Classifier):
         test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
 
         validation_generator = test_datagen.flow_from_directory(
-            './split/val',
-            target_size=(224, 224),
+            absolute_path('split/val'),
+            target_size=(self.img_width, self.img_height),
             color_mode='rgb',
-            batch_size=32,
+            batch_size=self.batch_size,
             class_mode='categorical',
             shuffle=True)
 
@@ -71,7 +72,4 @@ class MobileNetClassifier(Classifier):
             steps_per_epoch=step_size_train,
             validation_data=validation_generator,
             validation_steps=step_size_validation,
-            epochs=10)
-
-    def plot_history(self):
-        super().plot_history('mobilenet_cnn', '001')
+            epochs=self.epochs)
