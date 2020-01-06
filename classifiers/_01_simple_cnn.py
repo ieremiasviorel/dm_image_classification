@@ -55,7 +55,7 @@ class SimpleCNN(Classifier):
             batch_size=self.batch_size, class_mode='categorical')
 
         self.history = self.model.fit_generator(
-            train_generator=train_generator,
+            train_generator,
             validation_data=validation_generator,
             epochs=self.epochs,
             steps_per_epoch=self.nb_train_samples // self.batch_size,
