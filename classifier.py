@@ -25,7 +25,7 @@ class Classifier:
         pass
 
     def save_model(self):
-        self.model.save_weights('model-{}-{}.h5'.format(self.model_name, self.trial_name))
+        self.model.save_weights(absolute_path('model-{}-{}.h5'.format(self.model_name, self.trial_name)))
 
     def plot_history(self):
         plot_accuracy(self.history, self.model_name, self.trial_name)
