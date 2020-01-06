@@ -28,7 +28,7 @@ for i, layer in enumerate(model.layers):
     print(i, layer.name)
 
 for layer in base_model.layers:
-    layer.trainable = False
+    layer.trainable=False
 
 train_datagen = ImageDataGenerator(
     preprocessing_function=preprocess_input)  # included in our dependencies

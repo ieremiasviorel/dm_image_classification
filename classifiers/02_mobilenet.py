@@ -33,7 +33,7 @@ class MobileNetClassifier(Classifier):
         for i, layer in enumerate(self.model.layers):
             print(i, layer.name)
 
-        for layer in self.model.layers:
+        for layer in base_model.layers:
             layer.trainable = False
 
         train_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
