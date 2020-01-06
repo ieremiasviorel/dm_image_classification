@@ -3,7 +3,7 @@ from keras.layers import Conv2D, MaxPooling2D
 from keras.models import Sequential
 from keras.preprocessing.image import ImageDataGenerator
 
-from classifier import Classifier
+from classification.classifier import Classifier
 
 
 class SimpleCNN(Classifier):

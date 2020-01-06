@@ -4,7 +4,7 @@ from keras.layers import Dense, GlobalAveragePooling2D
 from keras.models import Model
 from keras.preprocessing.image import ImageDataGenerator
 
-from classifier import Classifier
+from classification.classifier import Classifier
 from definitions import absolute_path
 
 

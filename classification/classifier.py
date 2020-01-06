@@ -6,8 +6,8 @@ class Classifier:
     def __init__(self):
         self.model = None
         self.history = None
-        self.train_data_dir = absolute_path('split/train')
-        self.validation_data_dir = absolute_path('split/val')
+        self.train_data_dir = absolute_path('../split/train')
+        self.validation_data_dir = absolute_path('../split/val')
         self.test_data_dir = absolute_path('split/test')
         self.epochs = 10
         self.batch_size = 32
