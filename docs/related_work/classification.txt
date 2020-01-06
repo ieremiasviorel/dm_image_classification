@@ -1,0 +1,56 @@
+-------------------------------
+https://www.kaggle.com/msripooja/dog-images-classification-using-keras-alexnet#6.-Predict-values-using-the-trained-model
+defined all layers of AlexNet model - subset of data (only 20 classes)
+
+Results :
+loss, accuracy = 5.2860124867833305 0.3158682638299679
+
+----------------------------- 
+https://www.kaggle.com/twhitehurst3/stanford-dogs-keras-vgg16
+transfer learning with vgg16 - subset of data (only 10 classes)
+
+model = Sequential()
+model.add(base_model)
+model.add(GlobalAveragePooling2D())
+model.add(Dropout(0.5))
+model.add(Dense(10,activation='softmax'))
+model.summary()
+
+Results :
+Model Test Loss: 1.00163853382837
+Model Test Accuracy: 0.6637781629116117
+
+-----------------------------------
+https://www.kaggle.com/hengzheng/dog-breeds-classifier
+transfer learning with densenet121 - all classes
+
+backbone = DenseNet121(input_tensor=inp,
+                       weights="../input/densenet-keras/DenseNet-BC-121-32-no-top.h5",
+                       include_top=False)
+x = backbone.output
+x = GlobalAveragePooling2D()(x)
+x = Dense(1024, activation="relu")(x)
+x = Dropout(0.5)(x)
+x = Dense(512, activation="relu")(x)
+x = Dropout(0.5)(x)
+outp = Dense(num_classes, activation="softmax")(x)
+
+Results : val_loss: 0.9607 - val_acc: 0.7078
+
+---------------------------------------
+https://www.kaggle.com/devang/transfer-learning-with-keras-and-mobilenet-v2
+transfer learning with mobilenet-v2 - all classes
+
+base_model = MobileNetV2(include_top=False, weights='imagenet', input_shape=(targetx, targety, 3))
+
+x = base_model.output
+x = GlobalAveragePooling2D()(x)
+# x = Dropout(rate = .2)(x)
+x = BatchNormalization()(x)
+x = Dense(1280, activation='relu',  kernel_initializer=glorot_uniform(seed), bias_initializer='zeros')(x)
+# x = Dropout(rate = .2)(x)
+x = BatchNormalization()(x)
+predictions = Dense(classes, activation='softmax', kernel_initializer='random_uniform', bias_initializer='zeros')(x)
+model = Model(inputs=base_model.input, outputs=predictions)
+
+val_loss: 0.7772 - val_accuracy: 0.8018
