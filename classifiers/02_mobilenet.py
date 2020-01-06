@@ -13,10 +13,11 @@ class MobileNetClassifier(Classifier):
 
     def train(self):
         # imports the mobilenet model and discards the last 1000 neuron layer.
-        base_model = MobileNet(weights='imagenet', include_top=False)
+        base_model = MobileNet(
+            weights='imagenet',
+            include_top=False)
 
         x = base_model.output
-
         x = GlobalAveragePooling2D()(x)
         # add dense layers so that the model can learn more complex functions and classify for better results
         x = Dense(1024, activation='relu')(x)
