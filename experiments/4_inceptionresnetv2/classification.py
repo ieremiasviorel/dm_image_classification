@@ -9,7 +9,6 @@ from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Model
 from keras.optimizers import Adam
 from keras.models import save_model
-from keras.callbacks import ModelCheckpoint
 
 import pandas as pd  
 import seaborn as sn 
@@ -67,19 +66,13 @@ model.compile(optimizer='Adam', loss='categorical_crossentropy',
 step_size_train = train_generator.n//train_generator.batch_size
 step_size_validation = validation_generator.n//validation_generator.batch_size
 
-## checkpoints
-filepath="weights-improvement-{epoch:02d}.hdf5"
-checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=False, mode='auto')
-callbacks_list = [checkpoint]
 
 model.fit_generator(generator=train_generator,
                     steps_per_epoch=step_size_train,
                     validation_data=validation_generator,
                     validation_steps=step_size_validation,
-                    epochs=10,
-                    callbacks=callbacks_list)
+                    epochs=10)
 
-model.save_weights(filepath='dense_w.h5')
 
 ############################################### https://www.kaggle.com/devang/transfer-learning-with-keras-and-mobilenet-v2#Confusion-matrix
 # Classification report + confusion matrix 
