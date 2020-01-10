@@ -1,0 +1,14 @@
+120 class classification
+16418 images for training
+4162 images for testing
+			
+training 10 epochs
+
+			accuracy precision recall f1-score
+InceptionResNetv2	0.86     0.87      0.86   0.86
+MobileNetv2             0.68     0.73      0.68   0.68
+MobileNet		TODO
+VGG16
+Simple CNN
+
+metrics are calculated using support-weighted average
