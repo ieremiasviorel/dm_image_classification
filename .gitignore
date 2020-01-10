@@ -4,3 +4,4 @@
 /venv
 /split
 .vscode
+__pycache__
