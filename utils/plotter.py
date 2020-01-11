@@ -5,7 +5,7 @@ from definitions import RESULT_PLOTS_DIR
 
 
 def plot_accuracy(history, model_name, trial_name):
-    _config_plot(history.params.get('epochs'))
+    _config_plot('accuracy', history.params.get('epochs'))
     plt.title('{} accuracy'.format(model_name))
     plt.ylabel('accuracy')
     plt.plot(history.history['acc'])
@@ -15,7 +15,7 @@ def plot_accuracy(history, model_name, trial_name):
 
 
 def plot_loss(history, model_name, trial_name):
-    _config_plot(history.params.get('epochs'))
+    _config_plot('loss', history.params.get('epochs'))
     plt.title('{} loss'.format(model_name))
     plt.ylabel('loss')
     plt.plot(history.history['loss'])
@@ -24,12 +24,13 @@ def plot_loss(history, model_name, trial_name):
     plt.savefig(RESULT_PLOTS_DIR + '/loss_{}_{}.png'.format(model_name, trial_name))
 
 
-def _config_plot(x_lim):
+def _config_plot(type, x_lim):
     plt.clf()
     plt.autoscale(False)
     plt.figure(figsize=(6.4, 4.8))
     plt.xlim(0, x_lim)
-    plt.ylim(0.0, 1.0)
+    if type == 'accuracy':
+        plt.ylim(0.0, 1.0)
     plt.xlabel('epoch')
 
     ax = plt.gca()

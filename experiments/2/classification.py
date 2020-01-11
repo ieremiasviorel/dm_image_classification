@@ -1,13 +1,7 @@
-import numpy as np
-import os
-import keras
-import matplotlib.pyplot as plt
-from keras.layers import Dense, GlobalAveragePooling2D
 from keras.applications.vgg16 import VGG16, preprocess_input
-from keras.preprocessing import image
-from keras.preprocessing.image import ImageDataGenerator
+from keras.layers import Dense, GlobalAveragePooling2D
 from keras.models import Model
-from keras.optimizers import Adam
+from keras.preprocessing.image import ImageDataGenerator
 
 base_model = VGG16(include_top=False,
                    input_shape=(224, 224, 3),
@@ -59,8 +53,8 @@ model.compile(optimizer='Adam', loss='categorical_crossentropy',
 # loss function will be categorical cross entropy
 # evaluation metric will be accuracy
 
-step_size_train = train_generator.n//train_generator.batch_size
-step_size_validation = validation_generator.n//validation_generator.batch_size
+step_size_train = train_generator.n // train_generator.batch_size
+step_size_validation = validation_generator.n // validation_generator.batch_size
 model.fit_generator(generator=train_generator,
                     steps_per_epoch=step_size_train,
                     validation_data=validation_generator,

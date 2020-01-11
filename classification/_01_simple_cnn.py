@@ -6,9 +6,11 @@ from keras.preprocessing.image import ImageDataGenerator
 from classification.classifier import Classifier
 
 
-class SimpleCNN(Classifier):
+class SimpleCNNClassifier(Classifier):
     def __init__(self):
-        super(SimpleCNN, self).__init__()
+        super(SimpleCNNClassifier, self).__init__()
+        self.model_name = 'simple_cnn'
+        self.trial_name = '01'
 
     def train(self):
         self.model = Sequential()

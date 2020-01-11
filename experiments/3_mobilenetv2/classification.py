@@ -1,31 +1,24 @@
-import numpy as np
-import os
-import keras
-import matplotlib.pyplot as plt
-from keras.layers import Dense,GlobalAveragePooling2D
-from keras.applications.mobilenet_v2  import MobileNetV2
-from keras.applications.mobilenet_v2 import preprocess_input
-from keras.preprocessing import image
-from keras.preprocessing.image import ImageDataGenerator
-from keras.models import Model
-from keras.optimizers import Adam
-from keras.models import save_model
-
-import pandas as pd  
-import seaborn as sn 
-from sklearn.metrics import confusion_matrix, classification_report
-
 import matplotlib.image as mpimg
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sn
 from PIL import Image
+from keras.applications.mobilenet_v2 import MobileNetV2, preprocess_input
+from keras.layers import Dense, GlobalAveragePooling2D
+from keras.models import Model
+from keras.preprocessing.image import ImageDataGenerator
+from sklearn.metrics import confusion_matrix, classification_report
 
 base_model = MobileNetV2(weights='imagenet', include_top=False)
 
-x=base_model.output
-x=GlobalAveragePooling2D()(x)
-x=Dense(1024,activation='relu')(x) #we add dense layers so that the model can learn more complex functions and classify for better results.
-x=Dense(1024,activation='relu')(x) #dense layer 2
-x=Dense(512,activation='relu')(x) #dense layer 3
-preds=Dense(120,activation='softmax')(x) #final layer with softmax activation
+x = base_model.output
+x = GlobalAveragePooling2D()(x)
+x = Dense(1024, activation='relu')(
+    x)  # we add dense layers so that the model can learn more complex functions and classify for better results.
+x = Dense(1024, activation='relu')(x)  # dense layer 2
+x = Dense(512, activation='relu')(x)  # dense layer 3
+preds = Dense(120, activation='softmax')(x)  # final layer with softmax activation
 
 model = Model(inputs=base_model.input, outputs=preds)
 # specify the inputs
@@ -64,16 +57,14 @@ model.compile(optimizer='Adam', loss='categorical_crossentropy',
 # loss function will be categorical cross entropy
 # evaluation metric will be accuracy
 
-step_size_train = train_generator.n//train_generator.batch_size
-step_size_validation = validation_generator.n//validation_generator.batch_size
-
+step_size_train = train_generator.n // train_generator.batch_size
+step_size_validation = validation_generator.n // validation_generator.batch_size
 
 model.fit_generator(generator=train_generator,
                     steps_per_epoch=step_size_train,
                     validation_data=validation_generator,
                     validation_steps=step_size_validation,
                     epochs=10)
-
 
 ############################################### https://www.kaggle.com/devang/transfer-learning-with-keras-and-mobilenet-v2#Confusion-matrix
 # Classification report + confusion matrix 
@@ -93,12 +84,12 @@ print('Confusion Matrix')
 plt.clf()
 cm = confusion_matrix(validation_generator.classes, y)
 df = pd.DataFrame(cm, columns=validation_generator.class_indices)
-plt.figure(figsize=(80,80))
+plt.figure(figsize=(80, 80))
 sn.heatmap(df, annot=True)
 plt.savefig('./cm.png')
 
 ####################### Classify random img
-imageno=np.random.random_integers(low=0, high=validation_generator.samples)
+imageno = np.random.random_integers(low=0, high=validation_generator.samples)
 
 name = validation_generator.filepaths[imageno]
 print(name)
@@ -108,5 +99,5 @@ img = Image.open(validation_generator.filepaths[imageno]).resize((224, 224))
 probabilities = model.predict(preprocess_input(np.expand_dims(img, axis=0)))
 breed_list = tuple(zip(validation_generator.class_indices.values(), validation_generator.class_indices.keys()))
 
-for i in probabilities[0].argsort()[-3:][::-1]: 
-    print(probabilities[0][i], "  :  " , breed_list[i])
+for i in probabilities[0].argsort()[-3:][::-1]:
+    print(probabilities[0][i], "  :  ", breed_list[i])
