@@ -1,0 +1,322 @@
+0 input_1
+1 Conv1_pad
+2 Conv1
+3 bn_Conv1
+4 Conv1_relu
+5 expanded_conv_depthwise
+6 expanded_conv_depthwise_BN
+7 expanded_conv_depthwise_relu
+8 expanded_conv_project
+9 expanded_conv_project_BN
+10 block_1_expand
+11 block_1_expand_BN
+12 block_1_expand_relu
+13 block_1_pad
+14 block_1_depthwise
+15 block_1_depthwise_BN
+16 block_1_depthwise_relu
+17 block_1_project
+18 block_1_project_BN
+19 block_2_expand
+20 block_2_expand_BN
+21 block_2_expand_relu
+22 block_2_depthwise
+23 block_2_depthwise_BN
+24 block_2_depthwise_relu
+25 block_2_project
+26 block_2_project_BN
+27 block_2_add
+28 block_3_expand
+29 block_3_expand_BN
+30 block_3_expand_relu
+31 block_3_pad
+32 block_3_depthwise
+33 block_3_depthwise_BN
+34 block_3_depthwise_relu
+35 block_3_project
+36 block_3_project_BN
+37 block_4_expand
+38 block_4_expand_BN
+39 block_4_expand_relu
+40 block_4_depthwise
+41 block_4_depthwise_BN
+42 block_4_depthwise_relu
+43 block_4_project
+44 block_4_project_BN
+45 block_4_add
+46 block_5_expand
+47 block_5_expand_BN
+48 block_5_expand_relu
+49 block_5_depthwise
+50 block_5_depthwise_BN
+51 block_5_depthwise_relu
+52 block_5_project
+53 block_5_project_BN
+54 block_5_add
+55 block_6_expand
+56 block_6_expand_BN
+57 block_6_expand_relu
+58 block_6_pad
+59 block_6_depthwise
+60 block_6_depthwise_BN
+61 block_6_depthwise_relu
+62 block_6_project
+63 block_6_project_BN
+64 block_7_expand
+65 block_7_expand_BN
+66 block_7_expand_relu
+67 block_7_depthwise
+68 block_7_depthwise_BN
+69 block_7_depthwise_relu
+70 block_7_project
+71 block_7_project_BN
+72 block_7_add
+73 block_8_expand
+74 block_8_expand_BN
+75 block_8_expand_relu
+76 block_8_depthwise
+77 block_8_depthwise_BN
+78 block_8_depthwise_relu
+79 block_8_project
+80 block_8_project_BN
+81 block_8_add
+82 block_9_expand
+83 block_9_expand_BN
+84 block_9_expand_relu
+85 block_9_depthwise
+86 block_9_depthwise_BN
+87 block_9_depthwise_relu
+88 block_9_project
+89 block_9_project_BN
+90 block_9_add
+91 block_10_expand
+92 block_10_expand_BN
+93 block_10_expand_relu
+94 block_10_depthwise
+95 block_10_depthwise_BN
+96 block_10_depthwise_relu
+97 block_10_project
+98 block_10_project_BN
+99 block_11_expand
+100 block_11_expand_BN
+101 block_11_expand_relu
+102 block_11_depthwise
+103 block_11_depthwise_BN
+104 block_11_depthwise_relu
+105 block_11_project
+106 block_11_project_BN
+107 block_11_add
+108 block_12_expand
+109 block_12_expand_BN
+110 block_12_expand_relu
+111 block_12_depthwise
+112 block_12_depthwise_BN
+113 block_12_depthwise_relu
+114 block_12_project
+115 block_12_project_BN
+116 block_12_add
+117 block_13_expand
+118 block_13_expand_BN
+119 block_13_expand_relu
+120 block_13_pad
+121 block_13_depthwise
+122 block_13_depthwise_BN
+123 block_13_depthwise_relu
+124 block_13_project
+125 block_13_project_BN
+126 block_14_expand
+127 block_14_expand_BN
+128 block_14_expand_relu
+129 block_14_depthwise
+130 block_14_depthwise_BN
+131 block_14_depthwise_relu
+132 block_14_project
+133 block_14_project_BN
+134 block_14_add
+135 block_15_expand
+136 block_15_expand_BN
+137 block_15_expand_relu
+138 block_15_depthwise
+139 block_15_depthwise_BN
+140 block_15_depthwise_relu
+141 block_15_project
+142 block_15_project_BN
+143 block_15_add
+144 block_16_expand
+145 block_16_expand_BN
+146 block_16_expand_relu
+147 block_16_depthwise
+148 block_16_depthwise_BN
+149 block_16_depthwise_relu
+150 block_16_project
+151 block_16_project_BN
+152 Conv_1
+Found 16418 images belonging to 120 classes.
+Found 4162 images belonging to 120 classes.
+Epoch 1/10
+2020-01-07 20:19:51.337229: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 154140672 exceeds 10% of system memory.
+2020-01-07 20:19:52.039623: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 154140672 exceeds 10% of system memory.
+2020-01-07 20:19:52.740566: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 156905472 exceeds 10% of system memory.
+  1/513 [..............................] - ETA: 3:35:19 - loss: 4.9720 - accuracy: 0.0000e+002020-01-07 20:19:59.437398: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 154140672 exceeds 10% of system memory.
+2020-01-07 20:20:00.089868: W tensorflow/core/framework/cpu_allocator_impl.cc:81] Allocation of 154140672 exceeds 10% of system memory.
+107/513 [=====>........................] - ETA: 49:09 - loss: 3.7640 - accuracy: 0.1665
+513/513 [==============================] - 4407s 9s/step - loss: 2.3647 - accuracy: 0.3852 - val_loss: 0.1645 - val_accuracy: 0.6137
+Epoch 2/10
+513/513 [==============================] - 4177s 8s/step - loss: 1.5020 - accuracy: 0.5677 - val_loss: 1.0966 - val_accuracy: 0.6886
+Epoch 3/10
+513/513 [==============================] - 4148s 8s/step - loss: 1.2948 - accuracy: 0.6211 - val_loss: 1.9047 - val_accuracy: 0.6746
+Epoch 4/10
+513/513 [==============================] - 4249s 8s/step - loss: 1.1249 - accuracy: 0.6644 - val_loss: 1.4853 - val_accuracy: 0.6872
+Epoch 5/10
+513/513 [==============================] - 3977s 8s/step - loss: 1.0176 - accuracy: 0.7007 - val_loss: 1.9028 - val_accuracy: 0.6898
+Epoch 6/10
+513/513 [==============================] - 3777s 7s/step - loss: 0.8929 - accuracy: 0.7264 - val_loss: 1.2469 - val_accuracy: 0.6925
+Epoch 7/10
+513/513 [==============================] - 3794s 7s/step - loss: 0.8269 - accuracy: 0.7493 - val_loss: 1.8975 - val_accuracy: 0.6961
+Epoch 8/10
+513/513 [==============================] - 3792s 7s/step - loss: 0.7363 - accuracy: 0.7719 - val_loss: 0.7323 - val_accuracy: 0.6833
+Epoch 9/10
+513/513 [==============================] - 3779s 7s/step - loss: 0.6797 - accuracy: 0.7889 - val_loss: 0.5669 - val_accuracy: 0.6939
+Epoch 10/10
+513/513 [==============================] - 3799s 7s/step - loss: 0.6011 - accuracy: 0.8122 - val_loss: 1.3955 - val_accuracy: 0.6828
+[[9.99883771e-01 8.06167247e-17 7.82413370e-11 ... 2.74833433e-13
+  4.03708066e-14 2.49408038e-14]
+ [7.70851672e-01 1.00610726e-11 6.11314099e-05 ... 5.58437614e-06
+  5.20061612e-08 3.90148926e-07]
+ [3.98338819e-03 2.75218267e-14 1.17195448e-10 ... 9.51461576e-10
+  2.00016226e-10 1.97717451e-08]
+ ...
+ [3.00213777e-11 3.45628470e-10 1.05088835e-08 ... 2.04614707e-08
+  6.18719653e-08 8.77286402e-06]
+ [5.36048401e-15 8.29718615e-24 5.59639666e-21 ... 7.33732519e-13
+  4.79406959e-10 1.00000000e+00]
+ [5.22503086e-24 1.04545735e-34 2.47930071e-33 ... 2.40491404e-22
+  3.55127331e-17 1.00000000e+00]]
+[  0   0   7 ...  54 119 119]
+Classification Report
+              precision    recall  f1-score   support
+
+           0       0.86      0.39      0.53        31
+           1       0.75      0.89      0.81        37
+           2       1.00      0.51      0.68        51
+           3       0.62      0.83      0.71        30
+           4       0.59      0.70      0.64        43
+           5       0.87      0.89      0.88        38
+           6       0.89      0.82      0.86        40
+           7       0.37      0.66      0.47        35
+           8       0.59      0.54      0.57        35
+           9       0.75      0.90      0.82        48
+          10       0.86      0.69      0.76        35
+          11       0.64      0.59      0.61        39
+          12       0.77      0.79      0.78        38
+          13       0.76      0.71      0.74        35
+          14       0.76      0.69      0.72        32
+          15       0.53      0.55      0.54        31
+          16       0.50      0.78      0.61        32
+          17       0.53      0.67      0.59        30
+          18       0.95      0.65      0.77        31
+          19       0.62      0.66      0.64        44
+          20       0.61      0.51      0.56        37
+          21       0.69      0.29      0.41        38
+          22       0.89      0.87      0.88        38
+          23       0.91      0.78      0.84        40
+          24       0.54      0.90      0.67        31
+          25       0.70      0.93      0.80        40
+          26       0.85      0.62      0.72        47
+          27       0.93      0.41      0.57        32
+          28       0.35      0.58      0.43        31
+          29       0.41      0.21      0.28        33
+          30       0.94      0.92      0.93        37
+          31       0.82      0.77      0.79        35
+          32       1.00      0.67      0.80        36
+          33       1.00      0.47      0.64        34
+          34       0.54      0.77      0.64        35
+          35       0.58      0.76      0.66        37
+          36       0.88      0.21      0.34        33
+          37       0.47      0.88      0.62        32
+          38       0.73      0.20      0.31        40
+          39       0.81      0.83      0.82        41
+          40       0.77      0.80      0.79        41
+          41       0.68      0.75      0.71        40
+          42       0.57      0.93      0.70        40
+          43       0.56      0.89      0.69        36
+          44       0.89      0.89      0.89        37
+          45       0.55      0.68      0.61        31
+          46       0.65      0.53      0.59        32
+          47       0.57      0.52      0.54        31
+          48       0.95      0.66      0.78        32
+          49       0.87      0.62      0.72        42
+          50       0.60      0.65      0.62        37
+          51       0.57      0.50      0.53        32
+          52       0.61      0.91      0.73        34
+          53       0.51      0.74      0.60        38
+          54       0.56      0.77      0.65        31
+          55       1.00      0.52      0.68        31
+          56       0.56      0.80      0.66        30
+          57       0.58      0.60      0.59        35
+          58       0.56      0.74      0.63        34
+          59       1.00      0.48      0.65        31
+          60       0.93      0.45      0.61        31
+          61       0.64      0.76      0.69        33
+          62       0.82      0.87      0.84        31
+          63       0.87      0.84      0.85        31
+          64       0.63      0.71      0.67        31
+          65       0.93      0.83      0.88        30
+          66       0.96      0.69      0.80        32
+          67       0.83      0.80      0.81        30
+          68       0.72      0.81      0.76        32
+          69       0.92      0.74      0.82        31
+          70       0.66      0.63      0.64        30
+          71       0.60      0.60      0.60        30
+          72       0.92      0.71      0.80        31
+          73       0.92      0.77      0.84        30
+          74       0.66      0.77      0.71        30
+          75       0.55      0.90      0.68        31
+          76       0.44      0.74      0.55        31
+          77       0.95      0.61      0.75        31
+          78       0.90      0.79      0.84        34
+          79       0.54      0.84      0.66        32
+          80       0.48      0.35      0.41        31
+          81       0.53      0.80      0.64        30
+          82       0.52      0.77      0.62        30
+          83       0.64      0.97      0.77        31
+          84       0.51      0.81      0.62        31
+          85       0.92      0.40      0.56        30
+          86       0.70      0.57      0.63        37
+          87       1.00      0.15      0.26        34
+          88       0.80      0.93      0.86        44
+          89       0.62      0.16      0.26        31
+          90       0.52      0.93      0.67        41
+          91       1.00      0.65      0.78        31
+          92       0.92      0.72      0.81        32
+          93       0.55      0.77      0.64        31
+          94       0.95      0.66      0.78        32
+          95       0.69      0.69      0.69        32
+          96       0.89      0.94      0.91        34
+          97       0.50      0.03      0.06        30
+          98       0.42      0.86      0.56        36
+          99       0.50      0.28      0.36        39
+         100       0.74      0.93      0.82        30
+         101       0.96      0.64      0.77        42
+         102       0.92      0.57      0.71        40
+         103       0.65      0.98      0.78        42
+         104       0.54      0.67      0.60        39
+         105       0.79      0.53      0.64        43
+         106       0.96      0.61      0.75        44
+         107       0.92      0.77      0.84        44
+         108       0.89      1.00      0.94        40
+         109       1.00      0.78      0.88        32
+         110       0.81      0.84      0.83        31
+         111       0.56      0.95      0.70        37
+         112       0.57      0.52      0.54        31
+         113       0.67      0.26      0.37        31
+         114       0.50      0.74      0.60        31
+         115       0.65      0.47      0.55        32
+         116       1.00      0.61      0.76        31
+         117       0.67      0.69      0.68        32
+         118       0.86      0.63      0.73        30
+         119       0.93      0.82      0.87        34
+
+    accuracy                           0.68      4162
+   macro avg       0.73      0.68      0.67      4162
+weighted avg       0.73      0.68      0.68      4162

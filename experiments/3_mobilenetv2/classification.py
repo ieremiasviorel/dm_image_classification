@@ -3,13 +3,13 @@ import os
 import keras
 import matplotlib.pyplot as plt
 from keras.layers import Dense,GlobalAveragePooling2D
-from keras.applications.densenet import DenseNet201, preprocess_input
+from keras.applications.mobilenet_v2  import MobileNetV2
+from keras.applications.mobilenet_v2 import preprocess_input
 from keras.preprocessing import image
 from keras.preprocessing.image import ImageDataGenerator
 from keras.models import Model
 from keras.optimizers import Adam
 from keras.models import save_model
-from keras.callbacks import ModelCheckpoint
 
 import pandas as pd  
 import seaborn as sn 
@@ -18,7 +18,7 @@ from sklearn.metrics import confusion_matrix, classification_report
 import matplotlib.image as mpimg
 from PIL import Image
 
-base_model = DenseNet201(weights='imagenet', include_top=False)
+base_model = MobileNetV2(weights='imagenet', include_top=False)
 
 x=base_model.output
 x=GlobalAveragePooling2D()(x)
@@ -67,19 +67,13 @@ model.compile(optimizer='Adam', loss='categorical_crossentropy',
 step_size_train = train_generator.n//train_generator.batch_size
 step_size_validation = validation_generator.n//validation_generator.batch_size
 
-## checkpoints
-filepath="weights-improvement-{epoch:02d}.hdf5"
-checkpoint = ModelCheckpoint(filepath, monitor='val_loss', verbose=1, save_best_only=False, mode='auto')
-callbacks_list = [checkpoint]
 
 model.fit_generator(generator=train_generator,
                     steps_per_epoch=step_size_train,
                     validation_data=validation_generator,
                     validation_steps=step_size_validation,
-                    epochs=10,
-                    callbacks=callbacks_list)
+                    epochs=10)
 
-model.save_weights(filepath='dense_w.h5')
 
 ############################################### https://www.kaggle.com/devang/transfer-learning-with-keras-and-mobilenet-v2#Confusion-matrix
 # Classification report + confusion matrix 
