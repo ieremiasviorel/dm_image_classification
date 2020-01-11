@@ -6,7 +6,4 @@
 .vscode
 __pycache__
 **/*.h5
-<<<<<<< HEAD
-=======
 **/*.hdf5
->>>>>>> Mobilenet logs
