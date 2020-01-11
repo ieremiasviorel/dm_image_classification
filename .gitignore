@@ -1,6 +1,7 @@
 /.idea
-/data
 /input
-/venv
+/data
 /split
+/venv
 .vscode
+__pycache__
