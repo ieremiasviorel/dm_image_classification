@@ -86,7 +86,7 @@ class VGG19NetClassifier(Classifier):
         print(name)
         plt.imshow(mpimg.imread(name))
 
-        img = Image.open(self.validation_generator.filepaths[imageno]).resize(self.img_width, self.img_height)
+        img = Image.open(self.validation_generator.filepaths[imageno]).resize((self.img_width, self.img_height))
         probabilities = self.model.predict(preprocess_input(np.expand_dims(img, axis=0)))
         breed_list = tuple(
             zip(self.validation_generator.class_indices.values(),
