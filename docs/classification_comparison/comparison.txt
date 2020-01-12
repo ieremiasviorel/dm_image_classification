@@ -5,6 +5,7 @@
 training 10 epochs
 
 			accuracy precision recall f1-score
+NASNetLarge		0.91	 0.92	   0.91   0.90
 InceptionResNetv2	0.86     0.87      0.86   0.86
 DenseNet201		0.79	 0.82      0.79   0.79
 MobileNetv2             0.68     0.73      0.68   0.68
