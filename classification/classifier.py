@@ -44,6 +44,7 @@ class Classifier:
         self.validation_generator.reset()
         predictions = self.model.predict_generator(self.validation_generator)
         print(predictions)
+        classes = self.validation_generator.classes[self.validation_generator.index_array]
         y = np.argmax(predictions, axis=-1)
         print(y)
 
