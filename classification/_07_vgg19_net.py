@@ -2,7 +2,7 @@ import matplotlib.image as mpimg
 import matplotlib.pyplot as plt
 import numpy as np
 from PIL import Image
-from keras.applications.vgg16 import VGG16, preprocess_input
+from keras.applications.vgg19 import VGG19, preprocess_input
 from keras.layers import Dense, GlobalAveragePooling2D
 from keras.models import Model
 from keras.preprocessing.image import ImageDataGenerator
@@ -17,7 +17,7 @@ class VGG19NetClassifier(Classifier):
         self.trial_name = '01'
 
     def train(self):
-        base_model = VGG16(
+        base_model = VGG19(
             weights='imagenet',
             include_top=False)
 
