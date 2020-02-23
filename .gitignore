@@ -1,9 +1,10 @@
 /.idea
-/input
 /data
+/input
 /split
 /venv
 .vscode
 __pycache__
 **/*.h5
 **/*.hdf5
+**/*.pt

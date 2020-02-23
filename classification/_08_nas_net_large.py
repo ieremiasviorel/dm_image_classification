@@ -13,11 +13,13 @@ from classification.classifier import Classifier
 class NAsNetLargeClassifier(Classifier):
     def __init__(self):
         super(NAsNetLargeClassifier, self).__init__()
-        self.model_name = 'vgg_16'
+        self.model_name = 'nas_net_large'
         self.trial_name = '01'
 
     def train(self):
-        base_model = NASNetLarge(weights='imagenet', include_top=False)
+        base_model = NASNetLarge(
+			weights='imagenet',
+			include_top=False)
 
         x = base_model.output
         x = GlobalAveragePooling2D()(x)
